@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-
 public class App {
 
     public static void main(String[] args) {
@@ -16,6 +15,6 @@ public class App {
 
     @GetMapping("/")
     public String home() {
-        return "Hello, Jenkins Shared Library!";
+        return "Hello, World!";
     }
 }
