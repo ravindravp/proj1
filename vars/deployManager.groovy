@@ -5,9 +5,6 @@ def call() {
     // Use the Secret File stored in Jenkins credentials
     withCredentials([file(credentialsId: 'ssh-key', variable: 'SSH_KEY_PATH')]) {
         try {
-            // Debug: Print SSH Key Path
-            echo "Using SSH Key Path: ${SSH_KEY_PATH}"
-            
             // Verify the JAR file exists before attempting to transfer
             def jarFilePath = "target/sample-java-app-1.0-SNAPSHOT.jar"
             if (!fileExists(jarFilePath)) {
