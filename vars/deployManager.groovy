@@ -1,5 +1,5 @@
 def call() {
-    def ec2Ip = '13.51.85.169'
+    def ec2Ip = '56.228.19.176'
     echo "Deploying application to EC2 instance: ${ec2Ip}"
     
     // Use the Secret File stored in Jenkins credentials
