@@ -28,7 +28,8 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>3.0.0</version> <!-- Use the latest version -->
                 <configuration>
-                    <mainClass>com.example.App</mainClass> <!-- Specify the Main-Class -->
+                    <!-- Specify the Main-Class -->
+                    <mainClass>com.example.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>
