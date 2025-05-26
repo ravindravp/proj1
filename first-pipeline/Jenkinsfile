@@ -1,0 +1,44 @@
+@Library("shared-library") _
+pipeline {
+    agent any
+
+    stages {
+         stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Build') {
+             steps {
+                script {
+                 buildManager()
+                }
+        
+             }
+        }
+        stage('Verify Build') {
+             steps {
+                 sh 'ls -l target/'
+             }
+        }
+
+        stage('UnitTest') {
+             steps {
+                 unittestManager()
+        
+             }
+        }
+        stage('IntegrationTest') {
+             steps {
+                 integrationtestManager()
+        
+             }
+        }
+        stage('Deploy') {
+             steps {
+                 deployManager()
+        
+             }
+        }
+    }
+}
