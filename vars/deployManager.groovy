@@ -20,7 +20,7 @@ def call() {
             // Run the JAR file on the EC2 instance
             echo "Running JAR file on EC2 instance..."
             sh """
-                ssh -o StrictHostKeyChecking=no -i ${SSH_KEY_PATH} ubuntu@${ec2Ip} "java -jar /home/ubuntu/sample-java-app-1.0-SNAPSHOT.jar --server.port=8081"
+                ssh -o StrictHostKeyChecking=no -i ${SSH_KEY_PATH} ubuntu@${ec2Ip} "java -jar /home/ubuntu/sample-java-app-1.0-SNAPSHOT.jar"
             """
             
             echo "Deployment completed successfully!"
