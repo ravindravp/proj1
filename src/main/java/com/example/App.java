@@ -15,6 +15,6 @@ public class App {
 
     @GetMapping("/")
     public String home() {
-        return "Hello, World!";
+        return "Hello, World! Kudos! You have successfully deployed the New Saample Java Application";
     }
 }
