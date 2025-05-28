@@ -3,42 +3,66 @@ pipeline {
     agent any
 
     stages {
-         stage('Checkout') {
+        stage('Checkout') {
             steps {
                 checkout scm
             }
         }
+
         stage('Build') {
-             steps {
+            steps {
                 script {
-                 buildManager()
+                    buildManager()
                 }
-        
-             }
+            }
         }
+
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    sonarQubeManager()
+                }
+            }
+        }
+
         stage('Verify Build') {
-             steps {
-                 sh 'ls -l target/'
-             }
+            steps {
+                sh 'ls -l target/'
+            }
         }
 
         stage('UnitTest') {
-             steps {
-                 unittestManager()
-        
-             }
+            steps {
+                unittestManager()
+            }
         }
+
         stage('IntegrationTest') {
-             steps {
-                 integrationtestManager()
-        
-             }
+            steps {
+                integrationtestManager()
+            }
         }
-        stage('Deploy') {
-             steps {
-                 deployManager()
-        
-             }
+
+        stage('Docker Build and Push') {
+            steps {
+                script {
+                    dockerManager()
+                }
+            }
+        }
+
+        stage('Publish to JFrog Artifactory') {
+            steps {
+                script {
+                    jfrogManager()
+                }
+            }
+        }
+
+        stage('Deploy to EC2') {
+            steps {
+                deployManager()
+            }
         }
     }
 }
